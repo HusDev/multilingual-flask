@@ -6,7 +6,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField,TextAr
 from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'Your Database URL'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'Your Database'
 app.config.update(dict(
     SECRET_KEY="powerful secretkey",
     WTF_CSRF_SECRET_KEY="a csrf secret key"
