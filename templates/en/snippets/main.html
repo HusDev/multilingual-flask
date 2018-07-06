@@ -1,0 +1,16 @@
+<div class="col s9" style="padding-bottom:50px ;  margin-left:25%;margin-top:64px;">
+    <!-- Teal page content  -->
+    <div class="container">
+            {% for post in posts %}
+    <div class="row post">
+        <h5 class="title">{{ post.title }}</h5>
+        <hr>
+        <p class="content">
+            {{post.content}}
+        </p>
+        <a style="border-radius:20px;text-transform: none;" href="{{url_for('translate',lang='en',post_id=post.id)}}" class=" waves-light btn-small">Translate</a>
+    </div>
+    {% endfor %}
+</div>
+
+</div>

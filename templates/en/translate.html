@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static',filename='flask-logo.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="css/style.css") }}">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <title>Multilingual with flask</title>
+</head>
+
+<body style=" margin: 0px ;background-color:#26a69a; ">
+
+
+    <!-- navbar -->
+    {% include 'en/snippets/navbar.html' %}
+
+    <div class="row">
+        <!-- sidebar -->
+    <style>
+        #submit {
+            color: white;
+        }
+    </style>
+    <div class="col s3 hide-on-small-only" style="background-color:#90a4ae;  height:100vh; position:fixed ; left:0px; top:65px ; ">
+        <!-- Grey navigation panel -->
+        <div class="flat-pannel">
+            <h5>Translate the post</h5>
+    
+            <form method="POST" enctype="multipart/form-data" class="col s12">
+                {{ form.csrf_token }} {{ form.hidden_tag() }}
+                <div class="row" style="margin-bottom:0px">
+                    <div class="input-field col s12">
+                        {{ form.title(placeholder="Title",style="color:#32393d;") }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ form.content(class="materialize-textarea",placeholder="Content",style="color:#32393d") }}
+                    </div>
+                </div>
+                <div class="row">
+                    {{ form.submit(class="btn-small gray waves-effect waves-light") }}
+                    <!-- <i class="material-icons right">send</i> -->
+                </div>
+            </form>
+            <p>
+                <a href="{{ url_for('index',lang='ar') }}" style="color:white; font-family: 'Cairo', sans-serif;" class="lang"> اللغة العربية</a>
+                |
+                <a href="{{ url_for('index',lang='en') }}" style="color:#000000b3">English language</a>
+            </p>
+        </div>
+    </div>
+        <!-- main -->
+        <div class="col s9" style="padding-bottom:50px ;  margin-left:25%;margin-top:64px;">
+            <!-- Teal page content  -->
+            <div class="container">
+                <div class="row post">
+                    <h5 class="title">{{ post.title }}</h5>
+                    <hr>
+                    <p class="content">
+                        {{post.content}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</body>
+
+</html>
